@@ -60,23 +60,36 @@ class _BillsPageState extends State<BillsPage> {
     setState(() => rect = null);
   }
 
-  void _navigateAndReturnEditBill(
+  /*void _navigateAndReturnEditBill(
       BuildContext context, BillsGroup bills, int index) async {
     final result = await Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => BillEdit(bills: bills, index: index)),
     );
-    if (result != null) {
+    //print(result);
+    //bills = result;
+    setState(() {bills = result;});
+  }*/
+
+  void _navigateAndReturnEditBill(BillsGroup bills, int index) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => BillEdit(
+                bills: bills,
+                index: index,
+              )),
+    );
+
       bills = result;
-      bills = bills.sort();
-    }
-    setState(() => rect = null);
+
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return new Stack(
       children: <Widget>[
         Scaffold(
             appBar: new AppBar(
@@ -91,7 +104,7 @@ class _BillsPageState extends State<BillsPage> {
                     return Container(
                         child: Center(child: Text("Add bills below")));
                   } else {
-                    bills = bills.sort();
+                    //bills = bills.sort();
                     return ListView.builder(
                       itemCount: bills.length(),
                       itemBuilder: (context, index) {
@@ -106,8 +119,7 @@ class _BillsPageState extends State<BillsPage> {
                               child: InkWell(
                                 splashColor: Color(0xFF85bb65),
                                 onTap: () {
-                                  _navigateAndReturnEditBill(
-                                      context, bills, index);
+                                  _navigateAndReturnEditBill(bills, index);
                                 },
                                 child: Stack(
                                   children: <Widget>[
