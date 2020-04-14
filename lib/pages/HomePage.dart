@@ -97,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                                       padding:
                                           EdgeInsets.only(left: 20, top: 4),
                                       child: Text(
-                                        "This is the amount you must have set aside now",
+                                        "This is how much you should have set aside",
                                         style: TextStyle(fontSize: 16),
                                       ),
                                     ),
