@@ -60,18 +60,6 @@ class _BillsPageState extends State<BillsPage> {
     setState(() => rect = null);
   }
 
-  /*void _navigateAndReturnEditBill(
-      BuildContext context, BillsGroup bills, int index) async {
-    final result = await Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => BillEdit(bills: bills, index: index)),
-    );
-    //print(result);
-    //bills = result;
-    setState(() {bills = result;});
-  }*/
-
   void _navigateAndReturnEditBill(BillsGroup bills, int index) async {
     final result = await Navigator.push(
       context,
@@ -104,7 +92,6 @@ class _BillsPageState extends State<BillsPage> {
                     return Container(
                         child: Center(child: Text("Add bills below")));
                   } else {
-                    //bills = bills.sort();
                     return ListView.builder(
                       itemCount: bills.length(),
                       itemBuilder: (context, index) {
