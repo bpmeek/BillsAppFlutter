@@ -1,3 +1,4 @@
+
 import 'package:billsappflutter/services/BillsGroup.dart';
 import 'package:billsappflutter/services/PayInfo.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+
   var bills = new BillsGroup();
   var income = new PayInfo();
 
@@ -18,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   final formatCurrency = new NumberFormat.simpleCurrency();
 
   String amtNowTitle = "Amount needed now";
-  String amtNowDesc = "If you use a secondary account just for bills this is the amount that should be in it today to cover all future expenses while minimizing the per paycheck amount.";
+  String amtNowDesc = "If you use a secondary account just for bills this is the amount that should be in it today. This is to make sure all future expenses are covered, while minimizing the per paycheck amount. It will adjust automatically for payments and deposits.";
   String amtPerTitle = "Amount Needed Per Check";
   String amtPerDesc = "This is the minimum amount required from each paycheck to evenly distribute your bills across your paychecks.";
 
@@ -88,7 +91,7 @@ class _HomePageState extends State<HomePage> {
                                 padding: EdgeInsets.only(left: 20, top: 4, right: 20),
                                 child: Text(
                                     desc,
-                                    style: TextStyle(fontSize: 16),
+                                    style: TextStyle(fontSize: 16,),
                                     softWrap: true),
                               ),
                             ],

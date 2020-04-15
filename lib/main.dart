@@ -1,3 +1,5 @@
+import 'package:billsappflutter/resources/AppConfig.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:billsappflutter/pages/HomePage.dart';
@@ -9,6 +11,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

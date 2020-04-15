@@ -104,69 +104,71 @@ class _BillsPageState extends State<BillsPage> {
                             child: Padding(
                                 padding: EdgeInsets.only(left: 5, right: 5),
                                 child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                              ),
-                              child: InkWell(
-                                splashColor: Color(0xFF85bb65),
-                                onTap: () {
-                                  _navigateAndReturnEditBill(bills, index);
-                                },
-                                child: Stack(
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                  child: InkWell(
+                                    splashColor: Color(0xFF85bb65),
+                                    onTap: () {
+                                      _navigateAndReturnEditBill(bills, index);
+                                    },
+                                    child: Stack(
                                       children: <Widget>[
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: <Widget>[
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 15, top: 10),
-                                              child: Text(
-                                                bills.get(index).getName(),
-                                                style: TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 15, top: 10),
+                                                  child: Text(
+                                                    bills.get(index).getName(),
+                                                    style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 20, bottom: 10),
+                                                  child: Text(
+                                                    bills
+                                                        .get(index)
+                                                        .getDaysTillDueString(),
+                                                    style:
+                                                        TextStyle(fontSize: 15),
+                                                  ),
+                                                )
+                                              ],
                                             ),
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 20, bottom: 10),
-                                              child: Text(
-                                                bills
-                                                    .get(index)
-                                                    .getDaysTillDueString(),
-                                                style: TextStyle(fontSize: 15),
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                        Column(
-                                          children: <Widget>[
-                                            Padding(
-                                              padding:
-                                                  EdgeInsets.only(right: 10),
-                                              child: Text(
-                                                '${formatCurrency.format(bills.get(index).getDollarAmount())}',
-                                                //bills[index].getDollarAmount().toString(),
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
+                                            Column(
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding: EdgeInsets.only(
+                                                      right: 10),
+                                                  child: Text(
+                                                    '${formatCurrency.format(bills.get(index).getDollarAmount())}',
+                                                    //bills[index].getDollarAmount().toString(),
+                                                    style: TextStyle(
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                )
+                                              ],
                                             )
                                           ],
                                         )
                                       ],
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )));
+                                    ),
+                                  ),
+                                )));
                       },
                     );
                   }
