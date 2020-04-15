@@ -65,6 +65,9 @@ class _IncomePageState extends State<IncomePage> {
             ]),
             padding: EdgeInsets.all(10),
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
               child: Padding(
                 padding: EdgeInsets.all(10),
               child: Column(

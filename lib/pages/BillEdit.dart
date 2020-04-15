@@ -84,6 +84,7 @@ class _BillEditState extends State<BillEdit> {
   @override
   Widget build(BuildContext context) {
     final length = MediaQuery.of(context).size.height;
+    //final width = MediaQuery.of(context).size.height;
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Bills App"),
@@ -97,100 +98,107 @@ class _BillEditState extends State<BillEdit> {
           )
         ]),
         child: Center(
-          child: Card(
-            child: SizedBox(
-              height: length * .85,
-              child: Stack(children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      TextField(
-                        controller: _namecontroller,
-                        textCapitalization: TextCapitalization.sentences,
-                        decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Color(0xFF6200EE))),
-                            labelText: 'Name'),
-                      ),
-                      GestureDetector(
-                        onTap: () => _selectDate(context),
-                        child: AbsorbPointer(
-                          child: TextField(
-                            controller: _datecontroller,
-                            //keyboardType: TextInputType.datetime,
-                            decoration: InputDecoration(
-                                enabledBorder: const OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                        color: Color(0xFF6200EE))),
-                                labelText: 'Next Due Date'),
-                          ),
+          child: Padding(
+            padding: EdgeInsets.only(left: 10, right: 10),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              child: SizedBox(
+                height: length * .8,
+                //width: width * .95,
+                child: Stack(children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        TextField(
+                          controller: _namecontroller,
+                          textCapitalization: TextCapitalization.sentences,
+                          decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Color(0xFF6200EE))),
+                              labelText: 'Name'),
                         ),
-                      ),
-                      TextField(
-                        controller: _amtcontroller,
-                        keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
-                            enabledBorder: const OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Color(0xFF6200EE))),
-                            labelText: 'Amount Due'),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      )
-                    ],
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Expanded(
-                        flex: 5,
-                        child: Padding(
-                          padding: EdgeInsets.all(10),
-                          child: SizedBox(
-                            child: RaisedButton(
-                              onPressed: () {
-                                _removeBill(widget.bills.get(widget.index));
-                                widget.bills.saveBills();
-                                Navigator.pop(context, widget.bills);
-                              },
-                              color: Color(0xFF85bb65),
-                              textColor: Colors.white,
-                              child: new Text("Delete"),
+                        GestureDetector(
+                          onTap: () => _selectDate(context),
+                          child: AbsorbPointer(
+                            child: TextField(
+                              controller: _datecontroller,
+                              //keyboardType: TextInputType.datetime,
+                              decoration: InputDecoration(
+                                  enabledBorder: const OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: Color(0xFF6200EE))),
+                                  labelText: 'Next Due Date'),
                             ),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Padding(
-                          padding: EdgeInsets.all(10),
-                          child: SizedBox(
-                            child: RaisedButton(
-                              onPressed: () {
-                                _removeBill(widget.bills.get(widget.index));
-                                _addBill();
-                                widget.bills.saveBills();
-                                Navigator.pop(context, widget.bills);
-                              },
-                              color: Color(0xFF85bb65),
-                              textColor: Colors.white,
-                              child: new Text("Save"),
+                        TextField(
+                          controller: _amtcontroller,
+                          keyboardType: TextInputType.number,
+                          decoration: InputDecoration(
+                              enabledBorder: const OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Color(0xFF6200EE))),
+                              labelText: 'Amount Due'),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 5,
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: SizedBox(
+                              child: RaisedButton(
+                                onPressed: () {
+                                  _removeBill(widget.bills.get(widget.index));
+                                  widget.bills.saveBills();
+                                  Navigator.pop(context, widget.bills);
+                                },
+                                color: Color(0xFF85bb65),
+                                textColor: Colors.white,
+                                child: new Text("Delete"),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              ]),
+                        Expanded(
+                          flex: 5,
+                          child: Padding(
+                            padding: EdgeInsets.all(10),
+                            child: SizedBox(
+                              child: RaisedButton(
+                                onPressed: () {
+                                  _removeBill(widget.bills.get(widget.index));
+                                  _addBill();
+                                  widget.bills.saveBills();
+                                  Navigator.pop(context, widget.bills);
+                                },
+                                color: Color(0xFF85bb65),
+                                textColor: Colors.white,
+                                child: new Text("Save"),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ]),
+              ),
             ),
           ),
         ),

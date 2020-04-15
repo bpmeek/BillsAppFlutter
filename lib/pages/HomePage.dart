@@ -43,13 +43,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   _loadNeededNowInfo() {
-    Navigator.push(context, MaterialPageRoute(
-        builder: (context) => InfoNeededNow()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => InfoNeededNow()));
   }
 
-  _loadPerCheckInfo() {
-
-  }
+  _loadPerCheckInfo() {}
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +62,8 @@ class _HomePageState extends State<HomePage> {
           future: _loadData(),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
-              return Container(child: Center(child: Text("Add Bills and Income")));
+              return Container(
+                  child: Center(child: Text("Add Bills and Income")));
             } else {
               calculatedFields = bills.getAmountNeededNow(income);
               return Container(
@@ -76,62 +75,67 @@ class _HomePageState extends State<HomePage> {
                       height: length * 0.15,
                     ),
                     Container(
-                      decoration: new BoxDecoration(
-                          boxShadow: [
+                      decoration: new BoxDecoration(boxShadow: [
                         new BoxShadow(
                           color: Colors.grey[400],
                           blurRadius: 10.0,
                         )
                       ]),
                       child: Padding(
-                        padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
+                        padding:
+                            EdgeInsets.only(left: 10, right: 10, bottom: 5),
                         child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
                           child: InkWell(
                             splashColor: Color(0xFF85bb65),
                             onTap: () {
                               _loadNeededNowInfo();
                             },
-                          child: Row(
-                            children: <Widget>[
-                              SizedBox(
-                                height: length * .20,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    SizedBox(
-                                      height: length * .025,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 15),
-                                      child: Text(
-                                        "Amount Needed Now",
-                                        style: TextStyle(fontSize: 20),
+                            child: Row(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: length * .20,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: length * .025,
                                       ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 20, top: 4),
-                                      child: Text(
-                                        "This is how much you should have set aside",
-                                        style: TextStyle(fontSize: 16),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 15),
+                                        child: Text(
+                                          "Amount Needed Now",
+                                          style: TextStyle(fontSize: 20),
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(15),
-                                      child: Text(
-                                        formatCurrency
-                                            .format(calculatedFields[0]),
-                                        style: TextStyle(fontSize: 24),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 20, top: 4),
+                                        child: Text(
+                                          "This is how much you should have set aside",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ],
+                                      Padding(
+                                        padding: EdgeInsets.all(15),
+                                        child: Text(
+                                          formatCurrency
+                                              .format(calculatedFields[0]),
+                                          style: TextStyle(fontSize: 24),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),),
+                    ),
                     Container(
                       decoration: new BoxDecoration(boxShadow: [
                         new BoxShadow(
@@ -142,6 +146,9 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 10, right: 10),
                         child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
                           child: Row(
                             children: <Widget>[
                               SizedBox(

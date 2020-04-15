@@ -70,7 +70,7 @@ class _BillsPageState extends State<BillsPage> {
               )),
     );
 
-      bills = result;
+    bills = result;
 
     setState(() {});
   }
@@ -102,7 +102,12 @@ class _BillsPageState extends State<BillsPage> {
                                 blurRadius: 10.0,
                               )
                             ]),
-                            child: Card(
+                            child: Padding(
+                                padding: EdgeInsets.only(left: 5, right: 5, top: 2),
+                                child: Card(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15.0),
+                              ),
                               child: InkWell(
                                 splashColor: Color(0xFF85bb65),
                                 onTap: () {
@@ -162,7 +167,7 @@ class _BillsPageState extends State<BillsPage> {
                                   ],
                                 ),
                               ),
-                            ));
+                            )));
                       },
                     );
                   }
