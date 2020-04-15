@@ -1,4 +1,3 @@
-import 'package:billsappflutter/pages/InfoNeededNow.dart';
 import 'package:billsappflutter/services/BillsGroup.dart';
 import 'package:billsappflutter/services/PayInfo.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +16,11 @@ class _HomePageState extends State<HomePage> {
   List<dynamic> calculatedFields = new List<dynamic>(2);
 
   final formatCurrency = new NumberFormat.simpleCurrency();
+
+  String amtNowTitle = "Amount needed now";
+  String amtNowDesc = "If you use a secondary account just for bills this is the amount that should be in it today to cover all future expenses while minimizing the per paycheck amount";
+  String amtPerTitle = "Amount Needed Per Check";
+  String amtPerDesc = "This is the minimum amount required from each paycheck to evenly distribute your bills across your paychecks";
 
   Future<BillsGroup> _loadData() {
     Future<BillsGroup> futureBills;
@@ -42,9 +46,60 @@ class _HomePageState extends State<HomePage> {
     return futureBills;
   }
 
-  _loadNeededNowInfo() {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => InfoNeededNow()));
+  _loadNeededNowInfo(String title, String desc) {
+    final length = MediaQuery.of(context).size.height;
+    OverlayState overlayState = Overlay.of(context);
+    OverlayEntry overlayEntry;
+    overlayEntry = OverlayEntry(
+        builder: (context) => GestureDetector(
+            onTap: () {overlayEntry.remove();},
+            child: Stack(
+              children: <Widget>[
+                Opacity(
+                    opacity: .7,
+                    child: Container(
+                      color: Colors.grey[500],
+                    )),
+                Container(
+                  padding: EdgeInsets.all(20),
+                  child: Center(
+                    child: SizedBox(
+                      height: length * .3,
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              SizedBox(
+                                height: length * .025,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 15),
+                                child: Text(
+                                  title,
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(left: 20, top: 4, right: 20),
+                                child: Text(
+                                    desc,
+                                    style: TextStyle(fontSize: 16),
+                                    softWrap: true),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            )));
+    overlayState.insert(overlayEntry);
   }
 
   _loadPerCheckInfo() {}
@@ -91,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                           child: InkWell(
                             splashColor: Color(0xFF85bb65),
                             onTap: () {
-                              _loadNeededNowInfo();
+                              _loadNeededNowInfo(amtNowTitle, amtNowDesc);
                             },
                             child: Row(
                               children: <Widget>[
@@ -107,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                                       Padding(
                                         padding: EdgeInsets.only(left: 15),
                                         child: Text(
-                                          "Amount Needed Now",
+                                          amtNowTitle,
                                           style: TextStyle(fontSize: 20),
                                         ),
                                       ),
@@ -149,6 +204,11 @@ class _HomePageState extends State<HomePage> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15.0),
                           ),
+                          child: InkWell(
+                            splashColor: Color(0xFF85bb65),
+                            onTap: () {
+                              _loadNeededNowInfo(amtPerTitle, amtPerDesc);
+                            },
                           child: Row(
                             children: <Widget>[
                               SizedBox(
@@ -162,7 +222,7 @@ class _HomePageState extends State<HomePage> {
                                     Padding(
                                       padding: EdgeInsets.only(left: 15),
                                       child: Text(
-                                        "Amount Needed Per Check",
+                                        amtPerTitle,
                                         style: TextStyle(fontSize: 20),
                                       ),
                                     ),
@@ -186,7 +246,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             ],
-                          ),
+                          ),),
                         ),
                       ),
                     ),
