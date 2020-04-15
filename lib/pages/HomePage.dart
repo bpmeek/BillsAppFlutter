@@ -1,3 +1,4 @@
+import 'package:billsappflutter/pages/InfoNeededNow.dart';
 import 'package:billsappflutter/services/BillsGroup.dart';
 import 'package:billsappflutter/services/PayInfo.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +42,15 @@ class _HomePageState extends State<HomePage> {
     return futureBills;
   }
 
+  _loadNeededNowInfo() {
+    Navigator.push(context, MaterialPageRoute(
+        builder: (context) => InfoNeededNow()));
+  }
+
+  _loadPerCheckInfo() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     final length = MediaQuery.of(context).size.height;
@@ -76,6 +86,11 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
                         child: Card(
+                          child: InkWell(
+                            splashColor: Color(0xFF85bb65),
+                            onTap: () {
+                              _loadNeededNowInfo();
+                            },
                           child: Row(
                             children: <Widget>[
                               SizedBox(
@@ -116,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                       ),
-                    ),
+                    ),),
                     Container(
                       decoration: new BoxDecoration(boxShadow: [
                         new BoxShadow(
