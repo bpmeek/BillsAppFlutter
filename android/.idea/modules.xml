@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/android.iml" filepath="$PROJECT_DIR$/android.iml" group="android" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="android/app" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.6+3/android/shared_preferences.iml" filepath="$PROJECT_DIR$/../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-0.5.6+3/android/shared_preferences.iml" group="android/shared_preferences" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+6/android/shared_preferences_macos.iml" filepath="$PROJECT_DIR$/../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-0.0.1+6/android/shared_preferences_macos.iml" group="android/shared_preferences_macos" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+4/android/shared_preferences_web.iml" filepath="$PROJECT_DIR$/../../../../flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-0.1.2+4/android/shared_preferences_web.iml" group="android/shared_preferences_web" />
+    </modules>
+  </component>
+</project>
