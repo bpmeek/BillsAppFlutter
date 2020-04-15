@@ -18,9 +18,9 @@ class _HomePageState extends State<HomePage> {
   final formatCurrency = new NumberFormat.simpleCurrency();
 
   String amtNowTitle = "Amount needed now";
-  String amtNowDesc = "If you use a secondary account just for bills this is the amount that should be in it today to cover all future expenses while minimizing the per paycheck amount";
+  String amtNowDesc = "If you use a secondary account just for bills this is the amount that should be in it today to cover all future expenses while minimizing the per paycheck amount.";
   String amtPerTitle = "Amount Needed Per Check";
-  String amtPerDesc = "This is the minimum amount required from each paycheck to evenly distribute your bills across your paychecks";
+  String amtPerDesc = "This is the minimum amount required from each paycheck to evenly distribute your bills across your paychecks.";
 
   Future<BillsGroup> _loadData() {
     Future<BillsGroup> futureBills;
@@ -42,6 +42,8 @@ class _HomePageState extends State<HomePage> {
     futureIncome = income.loadIncome();
     futureIncome.then((value) {
       income.setNextPayDate(value.getNextPayDate());
+      income.setPayFrequency(value.getPayFrequency());
+      print("PayFreq: ${value.getPayFrequency()}");
     });
     return futureBills;
   }

@@ -28,6 +28,11 @@ class PayInfo {
     this._prevPayDate = getPrevPayDate();
   }
 
+  void setPayFrequency(int freq) {
+    this._payFrequency = freq;
+    this._payPeriods = 364~/freq;
+  }
+
   DateTime getNextPayDate() {
     DateTime today = DateTime.now();
     DateTime initDate = this._initialDate;

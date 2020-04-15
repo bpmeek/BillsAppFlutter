@@ -103,10 +103,10 @@ class _BillsPageState extends State<BillsPage> {
                               )
                             ]),
                             child: Padding(
-                                padding: EdgeInsets.only(left: 5, right: 5, top: 2),
+                                padding: EdgeInsets.only(left: 5, right: 5),
                                 child: Card(
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
+                                borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: InkWell(
                                 splashColor: Color(0xFF85bb65),
