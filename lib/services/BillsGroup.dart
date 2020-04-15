@@ -40,7 +40,7 @@ class BillsGroup {
 
   BillsGroup sort() {
     BillsGroup sorted = new BillsGroup();
-    _billCart.sort((a,b,) => a.daysTillDue.compareTo(b.daysTillDue));
+    _billCart.sort((a,b,) => a.getDaysTillDue().compareTo(b.getDaysTillDue()));
     _billCart.forEach((element) {sorted.addBill(element);});
     return sorted;
   }

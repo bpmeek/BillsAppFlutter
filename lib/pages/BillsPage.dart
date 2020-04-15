@@ -28,13 +28,15 @@ class _BillsPageState extends State<BillsPage> {
     }
     futureBills = bills.loadBills();
     futureBills.then((value) {
-      value.sort();
+      print("Sorting");
+      value = value.sort();
       for (int i = 0; i < value.length(); i++) {
         Bill bill = new Bill();
         bill.dueDate = value.get(i).dueDate;
         bill.dollarAmount = value.get(i).dollarAmount;
         bill.name = value.get(i).name;
-        bill.daysTillDue = value.get(i).daysTillDue;
+        bill.daysTillDue = value.get(i).getDaysTillDue();
+        print(bill.daysTillDue);
         bills.addBill(bill);
       }
     });
