@@ -64,6 +64,7 @@ class _BillNewState extends State<BillNew> {
   @override
   Widget build(BuildContext context) {
     final length = MediaQuery.of(context).size.height;
+    //final width = MediaQuery.of(context).size.width;
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("BillsApp"),
@@ -77,9 +78,15 @@ class _BillNewState extends State<BillNew> {
               blurRadius: 20.0,
             )
           ]),
+          child: Padding(
+              padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
           child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
             child: SizedBox(
-              height: length * .85,
+              height: length * .8,
+              //width: width * .95,
               child: Stack(children: <Widget>[
                 Container(
                   //color: Color(0xFF85bb65).withAlpha(90),
@@ -151,6 +158,7 @@ class _BillNewState extends State<BillNew> {
               ]),
             ),
           ),
+        ),
         ),
       ),
     );

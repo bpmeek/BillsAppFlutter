@@ -76,6 +76,9 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
                         child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
                           child: Row(
                             children: <Widget>[
                               SizedBox(
@@ -127,6 +130,9 @@ class _HomePageState extends State<HomePage> {
                       child: Padding(
                         padding: EdgeInsets.only(left: 10, right: 10),
                         child: Card(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15.0),
+                          ),
                           child: Row(
                             children: <Widget>[
                               SizedBox(
