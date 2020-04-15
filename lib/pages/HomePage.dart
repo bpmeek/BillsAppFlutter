@@ -43,7 +43,6 @@ class _HomePageState extends State<HomePage> {
     futureIncome.then((value) {
       income.setNextPayDate(value.getNextPayDate());
       income.setPayFrequency(value.getPayFrequency());
-      print("PayFreq: ${value.getPayFrequency()}");
     });
     return futureBills;
   }

@@ -192,7 +192,6 @@ class BillsGroup {
       bill = bill.loadBill(jsonMap);
       futureGroup.addBill(bill);
     });
-    futureGroup = futureGroup.sort();
     return futureGroup;
   }
 }

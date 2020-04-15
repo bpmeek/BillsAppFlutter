@@ -28,6 +28,7 @@ class _BillsPageState extends State<BillsPage> {
     }
     futureBills = bills.loadBills();
     futureBills.then((value) {
+      value.sort();
       for (int i = 0; i < value.length(); i++) {
         Bill bill = new Bill();
         bill.dueDate = value.get(i).dueDate;
@@ -69,9 +70,7 @@ class _BillsPageState extends State<BillsPage> {
                 index: index,
               )),
     );
-
     bills = result;
-
     setState(() {});
   }
 
