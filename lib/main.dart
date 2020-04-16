@@ -6,6 +6,7 @@ import 'package:billsappflutter/pages/BillsPage.dart';
 import 'package:billsappflutter/pages/IncomePage.dart';
 
 void main() {
+  //TODO figure out how to fix build flavors
   BuildEnvironment.init(flavor: BuildFlavor.free);
   assert(env != null);
   runApp(MyApp());

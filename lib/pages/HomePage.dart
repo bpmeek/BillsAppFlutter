@@ -21,28 +21,48 @@ class _HomePageState extends State<HomePage> {
   );
 
   BannerAd _bannerAd;
+  GlobalKey _titleKey = GlobalKey();
+
+  //double
+  _getOffset() {
+    final RenderBox renderBox = _titleKey.currentContext.findRenderObject();
+    final titleHeight = renderBox.size.height;
+    final titlePositionHeight = renderBox.localToGlobal(Offset.zero).dy;
+    return titleHeight + titlePositionHeight;
+  }
 
   BannerAd createBannerAd() {
     return BannerAd(
         //TODO change adUnitId
         adUnitId: BannerAd.testAdUnitId,
-        size: AdSize.banner,
+        size: AdSize.fullBanner,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
           print("BannerAd $event");
         });
   }
 
-  @override
+  /*@override
   void initState() {
     //TODO change appId
     FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+    double offset = _getOffset();
     if (env.flavor == BuildFlavor.free) {
         _bannerAd = createBannerAd()
         ..load()
-        ..show ();
+        ..show(anchorType: AnchorType.top, anchorOffset: offset);
         }
     super.initState();
+  }*/
+
+  _setAds() {
+      FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+      double offset = _getOffset();
+      if (env.flavor == BuildFlavor.free) {
+        _bannerAd = createBannerAd()
+          ..load()
+          ..show(anchorType: AnchorType.top, anchorOffset: offset);
+      }
   }
 
   @override
@@ -150,13 +170,15 @@ class _HomePageState extends State<HomePage> {
     overlayState.insert(overlayEntry);
   }
 
-  _loadPerCheckInfo() {}
-
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _setAds();
+    });
     final length = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: new AppBar(
+        key: _titleKey,
         title: new Text(env.flavor == BuildFlavor.free ? 'FREE' : 'PAID'),
         backgroundColor: Color(0xFF6200EE),
       ),
