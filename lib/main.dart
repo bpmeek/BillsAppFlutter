@@ -1,5 +1,4 @@
-
-
+import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:billsappflutter/pages/HomePage.dart';
@@ -7,6 +6,8 @@ import 'package:billsappflutter/pages/BillsPage.dart';
 import 'package:billsappflutter/pages/IncomePage.dart';
 
 void main() {
+  BuildEnvironment.init(flavor: BuildFlavor.free);
+  assert(env != null);
   runApp(MyApp());
 }
 
