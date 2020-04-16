@@ -52,6 +52,22 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+
+    flavorDimensions "app"
+
+    productFlavors{
+        free {
+            dimension "app"
+            resValue "string", "app_name", "Free BillsApp"
+            versionNameSuffix "-free"
+            applicationId "com.Finance.billsappflutter.free"
+        }
+        paid {
+            dimension "app"
+            resValue "string", "app_name", "BillsApp"
+            applicationId "com.Finance.billsappflutter"
+        }
+    }
 }
 
 flutter {

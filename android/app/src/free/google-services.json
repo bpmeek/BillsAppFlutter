@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "481860492823",
+    "firebase_url": "https://billsapp-c4d38.firebaseio.com",
+    "project_id": "billsapp-c4d38",
+    "storage_bucket": "billsapp-c4d38.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481860492823:android:b9496214252fa86d5e0652",
+        "android_client_info": {
+          "package_name": "com.Finance.billsappflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiiZJO2f367mLN6GuyuJa6ozSXj39aeME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:481860492823:android:8e4745233f5168575e0652",
+        "android_client_info": {
+          "package_name": "com.Finance.billsappflutter.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiiZJO2f367mLN6GuyuJa6ozSXj39aeME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
