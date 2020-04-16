@@ -87,7 +87,7 @@ class _BillEditState extends State<BillEdit> {
     //final width = MediaQuery.of(context).size.height;
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Bills App"),
+        title: new Text("BillsApp"),
         backgroundColor: Color(0xFF6200EE),
       ),
       body: Container(

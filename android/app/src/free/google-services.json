@@ -1,63 +1,34 @@
 {
   "project_info": {
-    "project_number": "481860492823",
-    "firebase_url": "https://billsapp-c4d38.firebaseio.com",
-    "project_id": "billsapp-c4d38",
-    "storage_bucket": "billsapp-c4d38.appspot.com"
+    "project_number": "1006447338874",
+    "firebase_url": "https://billsapp-11a23.firebaseio.com",
+    "project_id": "billsapp-11a23",
+    "storage_bucket": "billsapp-11a23.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:481860492823:android:b9496214252fa86d5e0652",
-        "android_client_info": {
-          "package_name": "com.Finance.billsappflutter"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBiiZJO2f367mLN6GuyuJa6ozSXj39aeME"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:481860492823:android:8e4745233f5168575e0652",
+        "mobilesdk_app_id": "1:1006447338874:android:326a4e6326577a543462c3",
         "android_client_info": {
           "package_name": "com.Finance.billsappflutter.free"
         }
       },
       "oauth_client": [
         {
-          "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
+          "client_id": "1006447338874-t2emps04l12bh2hcf0hrqe5d6qusif63.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBiiZJO2f367mLN6GuyuJa6ozSXj39aeME"
+          "current_key": "AIzaSyCdgGXEW-zUwXlZPQQhopSdOi3FgdnOhrU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "481860492823-itcat6oo8tm3q11ekcnu02jdtm47h0rq.apps.googleusercontent.com",
+              "client_id": "1006447338874-t2emps04l12bh2hcf0hrqe5d6qusif63.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -24,6 +24,7 @@ dependencies:
   shared_preferences: ^0.5.6+3
   rect_getter: 0.0.1
   flutter_launcher_icons: ^0.7.3
+  firebase_admob: ^0.9.3+1
 
 
   # The following adds the Cupertino Icons font to your application.

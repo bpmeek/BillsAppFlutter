@@ -3,5 +3,10 @@
     <!-- Flutter needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <application>
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3969397110418936~4895813586" />
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

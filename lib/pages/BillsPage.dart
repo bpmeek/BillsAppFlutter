@@ -80,7 +80,7 @@ class _BillsPageState extends State<BillsPage> {
       children: <Widget>[
         Scaffold(
             appBar: new AppBar(
-              title: new Text("Bills App"),
+              title: new Text("BillsApp"),
               backgroundColor: Color(0xFF6200EE),
             ),
             body: Container(

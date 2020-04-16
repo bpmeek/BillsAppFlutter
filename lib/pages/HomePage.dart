@@ -1,4 +1,4 @@
-
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:billsappflutter/services/BillsGroup.dart';
 import 'package:billsappflutter/services/PayInfo.dart';
@@ -6,13 +6,50 @@ import 'package:flutter/material.dart';
 import 'package:billsappflutter/services/Bill.dart';
 import 'package:intl/intl.dart';
 
+const String testDevices = 'Mobile_id';
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: testDevices != null ? <String>[testDevices] : null,
+    nonPersonalizedAds: true,
+    keywords: <String>['Finance', 'Bills', 'Income'],
+  );
 
+  BannerAd _bannerAd;
+
+  BannerAd createBannerAd() {
+    return BannerAd(
+        //TODO change adUnitId
+        adUnitId: BannerAd.testAdUnitId,
+        size: AdSize.banner,
+        targetingInfo: targetingInfo,
+        listener: (MobileAdEvent event) {
+          print("BannerAd $event");
+        });
+  }
+
+  @override
+  void initState() {
+    //TODO change appId
+    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+    if (env.flavor == BuildFlavor.free) {
+        _bannerAd = createBannerAd()
+        ..load()
+        ..show ();
+        }
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _bannerAd.dispose();
+    super.dispose();
+  }
 
   var bills = new BillsGroup();
   var income = new PayInfo();
@@ -22,9 +59,11 @@ class _HomePageState extends State<HomePage> {
   final formatCurrency = new NumberFormat.simpleCurrency();
 
   String amtNowTitle = "Amount needed now";
-  String amtNowDesc = "If you use a secondary account just for bills this is the amount that should be in it today. This is to make sure all future expenses are covered, while minimizing the per paycheck amount. It will adjust automatically for payments and deposits.";
+  String amtNowDesc =
+      "If you use a secondary account just for bills this is the amount that should be in it today. This is to make sure all future expenses are covered, while minimizing the per paycheck amount. It will adjust automatically for payments and deposits.";
   String amtPerTitle = "Amount Needed Per Check";
-  String amtPerDesc = "This is the minimum amount required from each paycheck to evenly distribute your bills across your paychecks.";
+  String amtPerDesc =
+      "This is the minimum amount required from each paycheck to evenly distribute your bills across your paychecks.";
 
   Future<BillsGroup> _loadData() {
     Future<BillsGroup> futureBills;
@@ -57,7 +96,9 @@ class _HomePageState extends State<HomePage> {
     OverlayEntry overlayEntry;
     overlayEntry = OverlayEntry(
         builder: (context) => GestureDetector(
-            onTap: () {overlayEntry.remove();},
+            onTap: () {
+              overlayEntry.remove();
+            },
             child: Stack(
               children: <Widget>[
                 Opacity(
@@ -89,10 +130,12 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(left: 20, top: 4, right: 20),
-                                child: Text(
-                                    desc,
-                                    style: TextStyle(fontSize: 16,),
+                                padding: EdgeInsets.only(
+                                    left: 20, top: 4, right: 20),
+                                child: Text(desc,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
                                     softWrap: true),
                               ),
                             ],
@@ -114,7 +157,7 @@ class _HomePageState extends State<HomePage> {
     final length = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: new AppBar(
-        title: new Text("BillsApp"),
+        title: new Text(env.flavor == BuildFlavor.free ? 'FREE' : 'PAID'),
         backgroundColor: Color(0xFF6200EE),
       ),
       body: Container(
@@ -214,44 +257,46 @@ class _HomePageState extends State<HomePage> {
                             onTap: () {
                               _loadNeededNowInfo(amtPerTitle, amtPerDesc);
                             },
-                          child: Row(
-                            children: <Widget>[
-                              SizedBox(
-                                height: length * .20,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    SizedBox(
-                                      height: length * .025,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 15),
-                                      child: Text(
-                                        amtPerTitle,
-                                        style: TextStyle(fontSize: 20),
+                            child: Row(
+                              children: <Widget>[
+                                SizedBox(
+                                  height: length * .20,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: length * .025,
                                       ),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 20, top: 4),
-                                      child: Text(
-                                        "This is the amount to set aside per check",
-                                        style: TextStyle(fontSize: 16),
+                                      Padding(
+                                        padding: EdgeInsets.only(left: 15),
+                                        child: Text(
+                                          amtPerTitle,
+                                          style: TextStyle(fontSize: 20),
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsets.all(15),
-                                      child: Text(
-                                        formatCurrency
-                                            .format(calculatedFields[1]),
-                                        style: TextStyle(fontSize: 24),
+                                      Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 20, top: 4),
+                                        child: Text(
+                                          "This is the amount to set aside per check",
+                                          style: TextStyle(fontSize: 16),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                      Padding(
+                                        padding: EdgeInsets.all(15),
+                                        child: Text(
+                                          formatCurrency
+                                              .format(calculatedFields[1]),
+                                          style: TextStyle(fontSize: 24),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                     ),

@@ -64,7 +64,7 @@ class _IncomePageState extends State<IncomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         appBar: new AppBar(
-          title: new Text("Bills App"),
+          title: new Text("BillsApp"),
           backgroundColor: Color(0xFF6200EE),
         ),
         body: Container(
