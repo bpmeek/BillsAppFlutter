@@ -74,8 +74,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
   BannerAd createBannerAd() {
     return BannerAd(
-        //TODO change adUnitId
-        adUnitId: BannerAd.testAdUnitId,
+        adUnitId: "ca-app-pub-3969397110418936/1308433115", //BannerAd.testAdUnitId,
         size: AdSize.fullBanner,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
