@@ -72,96 +72,97 @@ class _IncomePageState extends State<IncomePage> {
   Widget build(BuildContext context) {
     return new Scaffold(
         body: Container(
-          child: FutureBuilder(
-            future: _loadData(),
-            builder: (BuildContext context, AsyncSnapshot snapshot) {
-              return Stack(children: <Widget>[
-                Center(
-                  child: Container(
-                    decoration: new BoxDecoration(boxShadow: [
-                      new BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 20.0,
-                      )
-                    ]),
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: adOffset),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: <Widget>[
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  FormField<String>(
-                                      builder: (FormFieldState<String> state) {
-                                    return InputDecorator(
-                                      decoration: InputDecoration(
-                                          enabledBorder:
-                                              const OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                      color:
-                                                          Color(0xFF6200EE))),
-                                          labelText: 'Income Frequency'),
-                                      isEmpty: _currentSelectedValue == '',
-                                      child: DropdownButton<PayFrequency>(
-                                        value: _currentSelectedValue,
-                                        isDense: false,
-                                        onChanged: (PayFrequency newValue) {
-                                          setState(() {
-                                            _currentSelectedValue = newValue;
-                                            income.setPayFrequency(
-                                                _currentSelectedValue
-                                                    .payFrequency);
-                                            income.saveIncome(income);
-                                          });
-                                        },
-                                        items: _incomeList
-                                            .map((PayFrequency value) {
-                                          return DropdownMenuItem<PayFrequency>(
-                                            value: value,
-                                            child: Text(
-                                              value.payStr,
-                                              style: TextStyle(fontSize: 20),
-                                            ),
-                                          );
-                                        }).toList(),
-                                      ),
-                                    );
-                                  }),
-                                ]),
-                            GestureDetector(
-                              onTap: () => _selectDate(context),
-                              child: AbsorbPointer(
-                                child: TextField(
-                                  style: TextStyle(fontSize: 20),
-                                  controller: _datecontroller,
-                                  decoration: new InputDecoration(
-                                    enabledBorder: const OutlineInputBorder(
-                                        borderSide: const BorderSide(
-                                            color: Color(0xFF6200EE))),
-                                    labelText: 'Next Pay Date',
+      child: FutureBuilder(
+        future: _loadData(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return Stack(children: <Widget>[
+            Center(
+              child: Container(
+                decoration: new BoxDecoration(boxShadow: [
+                  new BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 20.0,
+                  )
+                ]),
+                padding: EdgeInsets.only(
+                    left: 10, right: 10, bottom: 10, top: adOffset),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              FormField<String>(
+                                  builder: (FormFieldState<String> state) {
+                                return InputDecorator(
+                                  decoration: InputDecoration(
+                                      enabledBorder: const OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                              color: Color(0xFF6200EE))),
+                                      labelText: 'Income Frequency'),
+                                  isEmpty: _currentSelectedValue == '',
+                                  child: DropdownButtonHideUnderline(
+                                    child: DropdownButton<PayFrequency>(
+                                      value: _currentSelectedValue,
+                                      isDense: false,
+                                      onChanged: (PayFrequency newValue) {
+                                        setState(() {
+                                          _currentSelectedValue = newValue;
+                                          income.setPayFrequency(
+                                              _currentSelectedValue
+                                                  .payFrequency);
+                                          income.saveIncome(income);
+                                        });
+                                      },
+                                      items:
+                                          _incomeList.map((PayFrequency value) {
+                                        return DropdownMenuItem<PayFrequency>(
+                                          value: value,
+                                          child: Text(
+                                            value.payStr,
+                                            style: TextStyle(fontSize: 20),
+                                          ),
+                                        );
+                                      }).toList(),
+                                    ),
                                   ),
-                                ),
+                                );
+                              }),
+                            ]),
+                        GestureDetector(
+                          onTap: () => _selectDate(context),
+                          child: AbsorbPointer(
+                            child: TextField(
+                              style: TextStyle(fontSize: 20),
+                              controller: _datecontroller,
+                              decoration: new InputDecoration(
+                                enabledBorder: const OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Color(0xFF6200EE))),
+                                labelText: 'Next Pay Date',
                               ),
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ]);
-            },
-          ),
-        ));
+              ),
+            ),
+          ]);
+        },
+      ),
+    ));
   }
 }
