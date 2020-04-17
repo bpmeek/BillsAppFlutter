@@ -1,3 +1,4 @@
+import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:billsappflutter/services/PayFrequency.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
@@ -12,6 +13,8 @@ class _IncomePageState extends State<IncomePage> {
   PayInfo income = new PayInfo();
   final _datecontroller = TextEditingController();
   DateTime selectedDate = DateTime.now();
+
+  double adOffset = 10.0;
 
   List<PayFrequency> _incomeList = <PayFrequency>[
     PayFrequency("Every 7 days", 7),
@@ -42,6 +45,11 @@ class _IncomePageState extends State<IncomePage> {
     _datecontroller.addListener(() {
       _datecontroller.value = _datecontroller.value.copyWith();
     });
+
+    if (env.flavor == BuildFlavor.free) {
+      adOffset = 60.0;
+    }
+
     super.initState();
   }
 
@@ -63,10 +71,6 @@ class _IncomePageState extends State<IncomePage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("BillsApp"),
-          backgroundColor: Color(0xFF6200EE),
-        ),
         body: Container(
           child: FutureBuilder(
             future: _loadData(),
@@ -80,7 +84,7 @@ class _IncomePageState extends State<IncomePage> {
                         blurRadius: 20.0,
                       )
                     ]),
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10, top: adOffset),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15.0),

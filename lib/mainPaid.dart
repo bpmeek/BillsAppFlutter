@@ -56,6 +56,10 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("BillsApp"),
+        backgroundColor: Color(0xFF6200EE),
+      ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           onTap: onTappedBar,

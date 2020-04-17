@@ -172,16 +172,11 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    /*WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAds();
-    });
+    });*/
     final length = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: new AppBar(
-        key: _titleKey,
-        title: new Text(env.flavor == BuildFlavor.free ? 'FREE' : 'PAID'),
-        backgroundColor: Color(0xFF6200EE),
-      ),
       body: Container(
         child: FutureBuilder(
           future: _loadData(),

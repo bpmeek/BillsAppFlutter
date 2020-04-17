@@ -1,3 +1,4 @@
+import 'package:firebase_admob/firebase_admob.dart';
 import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,16 +47,68 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   }
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
   }
 
+  static const String testDevices = 'Mobile_id';
+
+  static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
+    testDevices: testDevices != null ? <String>[testDevices] : null,
+    nonPersonalizedAds: true,
+    keywords: <String>['Finance', 'Bills', 'Income'],
+  );
+
+  BannerAd _bannerAd;
+  GlobalKey _titleKey = GlobalKey();
+
+  //double
+  _getOffset() {
+    final RenderBox renderBox = _titleKey.currentContext.findRenderObject();
+    final titleHeight = renderBox.size.height;
+    final titlePositionHeight = renderBox.localToGlobal(Offset.zero).dy;
+    return titleHeight + titlePositionHeight;
+  }
+
+  BannerAd createBannerAd() {
+    return BannerAd(
+        //TODO change adUnitId
+        adUnitId: BannerAd.testAdUnitId,
+        size: AdSize.fullBanner,
+        targetingInfo: targetingInfo,
+        listener: (MobileAdEvent event) {
+          print("BannerAd $event");
+        });
+  }
+
+  _setAds() {
+    FirebaseAdMob.instance.initialize(appId: BannerAd.testAdUnitId);
+    double offset = _getOffset();
+    _bannerAd = createBannerAd()
+      ..load()
+      ..show(anchorType: AnchorType.top, anchorOffset: offset);
+  }
+
+  @override
+  void dispose() {
+    _bannerAd.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _setAds();
+    });
     return new Scaffold(
+      appBar: new AppBar(
+        key: _titleKey,
+        title: new Text("BillsApp"),
+        backgroundColor: Color(0xFF6200EE),
+      ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           onTap: onTappedBar,

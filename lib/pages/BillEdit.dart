@@ -1,3 +1,4 @@
+import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:billsappflutter/services/BillsGroup.dart';
 import 'package:flutter/material.dart';
 import 'package:billsappflutter/services/Bill.dart';
@@ -13,7 +14,6 @@ class BillEdit extends StatefulWidget {
   BillEdit({Key key, @required this.bills, this.index}) : super(key: key);
 
   //
-
   @override
   _BillEditState createState() => _BillEditState();
 }
@@ -25,6 +25,7 @@ class _BillEditState extends State<BillEdit> {
 
   final formatCurrency = new NumberFormat.simpleCurrency();
   DateTime selectedDate;
+  double offsetPadding = 0;
 
   @override
   void initState() {
@@ -39,6 +40,9 @@ class _BillEditState extends State<BillEdit> {
     _datecontroller.text = Jiffy(bill.getNextDueDate()).yMMMd;
     _amtcontroller.text = formatCurrency.format(bill.getDollarAmount());
 
+    if (env.flavor == BuildFlavor.free) {
+      offsetPadding = 60.0;
+    }
     super.initState();
   }
 
@@ -91,6 +95,7 @@ class _BillEditState extends State<BillEdit> {
         backgroundColor: Color(0xFF6200EE),
       ),
       body: Container(
+        padding: EdgeInsets.only(top: offsetPadding),
         decoration: new BoxDecoration(boxShadow: [
           new BoxShadow(
             color: Colors.grey,

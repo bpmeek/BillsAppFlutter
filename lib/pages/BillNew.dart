@@ -1,3 +1,4 @@
+import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:billsappflutter/services/BillsGroup.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
@@ -25,11 +26,17 @@ class _BillNewState extends State<BillNew> {
 
   final formatCurrency = new NumberFormat.simpleCurrency();
 
+  double offsetPadding = 0.0;
+
   @override
   void initState() {
     _datecontroller.addListener(() {
       _datecontroller.value = _datecontroller.value.copyWith();
     });
+
+    if (env.flavor == BuildFlavor.free) {
+      offsetPadding = 60.0;
+    }
     super.initState();
   }
 
@@ -79,7 +86,7 @@ class _BillNewState extends State<BillNew> {
             )
           ]),
           child: Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, bottom: 5),
+              padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: offsetPadding),
           child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),

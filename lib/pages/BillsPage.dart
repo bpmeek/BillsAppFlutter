@@ -1,3 +1,5 @@
+import 'package:firebase_admob/firebase_admob.dart';
+import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:billsappflutter/pages/BillNew.dart';
 import 'package:billsappflutter/pages/BillEdit.dart';
 import 'package:billsappflutter/services/BillsGroup.dart';
@@ -5,6 +7,8 @@ import 'package:billsappflutter/services/Bill.dart';
 import 'package:flutter/material.dart';
 import 'package:rect_getter/rect_getter.dart';
 import 'package:intl/intl.dart';
+
+const String testDevices = 'Mobile_id';
 
 class BillsPage extends StatefulWidget {
   @override
@@ -17,9 +21,19 @@ class _BillsPageState extends State<BillsPage> {
   GlobalKey rectGetterKey = RectGetter.createGlobalKey();
   Rect rect;
 
+  double offsetPadding = 0.0;
+
   BillsGroup bills = new BillsGroup();
 
   final formatCurrency = new NumberFormat.simpleCurrency();
+
+  @override
+  void initState() {
+    if (env.flavor == BuildFlavor.free) {
+      offsetPadding = 60.0;
+    }
+    super.initState();
+  }
 
   Future<BillsGroup> _loadData() {
     Future<BillsGroup> futureBills;
@@ -79,11 +93,8 @@ class _BillsPageState extends State<BillsPage> {
     return new Stack(
       children: <Widget>[
         Scaffold(
-            appBar: new AppBar(
-              title: new Text("BillsApp"),
-              backgroundColor: Color(0xFF6200EE),
-            ),
             body: Container(
+              padding: EdgeInsets.only(top: offsetPadding),
               child: FutureBuilder(
                 future: _loadData(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
