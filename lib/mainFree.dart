@@ -53,7 +53,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     ]);
   }
 
-  static const String testDevices = 'Mobile_id';
+  /*static const String testDevices = 'Mobile_id';
 
   static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
     testDevices: testDevices != null ? <String>[testDevices] : null,
@@ -94,16 +94,16 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   void dispose() {
     _bannerAd.dispose();
     super.dispose();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _setAds();
+      //_setAds();
     });
     return new Scaffold(
       appBar: new AppBar(
-        key: _titleKey,
+        //key: _titleKey,
         title: new Text("BillsApp"),
         backgroundColor: Color(0xFF6200EE),
       ),
