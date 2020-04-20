@@ -32,5 +32,7 @@
 	<string>1:1006447338874:ios:b30ccb22357159583462c3</string>
 	<key>DATABASE_URL</key>
 	<string>https://billsapp-11a23.firebaseio.com</string>
+	<key>GADApplicationIdentifier</key>
+    <string>ca-app-pub-3969397110418936~4390995672</string>
 </dict>
 </plist>

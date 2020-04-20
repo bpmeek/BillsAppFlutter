@@ -78,8 +78,8 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     if (Platform.isAndroid) {
       adUnitID = "ca-app-pub-3969397110418936/1308433115";
     } else if (Platform.isIOS) {
-      //TODO add iOS adUnitID
-      // iOS-specific code
+      //TODO test iOS ads
+      adUnitID = "ca-app-pub-3969397110418936/7337960315";
     }
     return BannerAd(
         adUnitId: adUnitID, //BannerAd.testAdUnitId,
