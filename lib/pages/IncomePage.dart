@@ -84,8 +84,7 @@ class _IncomePageState extends State<IncomePage> {
                     blurRadius: 20.0,
                   )
                 ]),
-                padding: EdgeInsets.only(
-                    left: 10, right: 10, bottom: 10, top: adOffset),
+                padding: EdgeInsets.only(left: 15, right: 15, bottom: 60, top: 60),
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),

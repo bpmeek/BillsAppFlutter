@@ -2,7 +2,7 @@
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/brandonmeek/development/flutter"
 export "FLUTTER_APPLICATION_PATH=/Users/brandonmeek/StudioProjects/BillsAppFlutter"
-export "FLUTTER_TARGET=/Users/brandonmeek/StudioProjects/BillsAppFlutter/lib/mainPaid.dart"
+export "FLUTTER_TARGET=/Users/brandonmeek/StudioProjects/BillsAppFlutter/lib/mainFree.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_FRAMEWORK_DIR=/Users/brandonmeek/development/flutter/bin/cache/artifacts/engine/ios"

@@ -2,6 +2,7 @@ import 'package:firebase_admob/firebase_admob.dart';
 import 'package:billsappflutter/resources/Flavors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:io' show Platform;
 import 'package:billsappflutter/pages/HomePage.dart';
 import 'package:billsappflutter/pages/BillsPage.dart';
 import 'package:billsappflutter/pages/IncomePage.dart';
@@ -53,7 +54,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     ]);
   }
 
-  /*static const String testDevices = 'Mobile_id';
+  static const String testDevices = 'Mobile_id';
 
   static const MobileAdTargetingInfo targetingInfo = MobileAdTargetingInfo(
     testDevices: testDevices != null ? <String>[testDevices] : null,
@@ -63,6 +64,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
   BannerAd _bannerAd;
   GlobalKey _titleKey = GlobalKey();
+  String adUnitID;
 
   //double
   _getOffset() {
@@ -73,8 +75,14 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   }
 
   BannerAd createBannerAd() {
+    if (Platform.isAndroid) {
+      adUnitID = "ca-app-pub-3969397110418936/1308433115";
+    } else if (Platform.isIOS) {
+      //TODO add iOS adUnitID
+      // iOS-specific code
+    }
     return BannerAd(
-        adUnitId: "ca-app-pub-3969397110418936/1308433115", //BannerAd.testAdUnitId,
+        adUnitId: adUnitID, //BannerAd.testAdUnitId,
         size: AdSize.fullBanner,
         targetingInfo: targetingInfo,
         listener: (MobileAdEvent event) {
@@ -94,12 +102,12 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   void dispose() {
     _bannerAd.dispose();
     super.dispose();
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      //_setAds();
+      _setAds();
     });
     return new Scaffold(
       appBar: new AppBar(

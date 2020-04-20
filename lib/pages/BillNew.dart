@@ -86,14 +86,11 @@ class _BillNewState extends State<BillNew> {
             )
           ]),
           child: Padding(
-              padding: EdgeInsets.only(left: 10, right: 10, bottom: 5, top: offsetPadding),
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            child: SizedBox(
-              height: length * .8,
-              //width: width * .95,
+            padding: EdgeInsets.only(left: 15, right: 15, bottom: 60, top: 60),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
               child: Stack(children: <Widget>[
                 Container(
                   //color: Color(0xFF85bb65).withAlpha(90),
@@ -165,7 +162,6 @@ class _BillNewState extends State<BillNew> {
               ]),
             ),
           ),
-        ),
         ),
       ),
     );
