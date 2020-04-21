@@ -68,18 +68,25 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
 
   //double
   _getOffset() {
-    final RenderBox renderBox = _titleKey.currentContext.findRenderObject();
-    final titleHeight = renderBox.size.height;
-    final titlePositionHeight = renderBox.localToGlobal(Offset.zero).dy;
-    return titleHeight + titlePositionHeight;
+    if (Platform.isAndroid) {
+      final RenderBox renderBox = _titleKey.currentContext.findRenderObject();
+      final titleHeight = renderBox.size.height;
+      final titlePositionHeight = renderBox
+          .localToGlobal(Offset.zero)
+          .dy;
+      return titleHeight + titlePositionHeight;
+    } else if (Platform.isIOS) {
+      return 50.0;
+    }
   }
 
   BannerAd createBannerAd() {
     if (Platform.isAndroid) {
       adUnitID = "ca-app-pub-3969397110418936/1308433115";
     } else if (Platform.isIOS) {
-      //TODO test iOS ads
-      adUnitID = "ca-app-pub-3969397110418936/7337960315";
+      //adUnitID = "ca-app-pub-3969397110418936/7337960315"; //Production
+      //TODO switch to production
+      adUnitID = "ca-app-pub-3940256099942544/2934735716"; //Test
     }
     return BannerAd(
         adUnitId: adUnitID, //BannerAd.testAdUnitId,
@@ -111,7 +118,7 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
     });
     return new Scaffold(
       appBar: new AppBar(
-        //key: _titleKey,
+        key: _titleKey,
         title: new Text("BillsApp"),
         backgroundColor: Color(0xFF6200EE),
       ),
